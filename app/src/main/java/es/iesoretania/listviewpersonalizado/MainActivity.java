@@ -9,15 +9,17 @@ import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import es.iesoretania.listviewpersonalizado.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemClickListener {
-    private ActivityMainBinding binding;
     List<Modulo> milistamodulos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        ActivityMainBinding binding;
+
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
@@ -37,13 +39,13 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        if (milistamodulos.get(i).getModulo()=="ASIR"){
+        if (Objects.equals(milistamodulos.get(i).getModulo(), "ASIR")){
             Intent intent = new Intent(this, ASIRActivity.class);
             startActivity(intent);
-        }else if (milistamodulos.get(i).getModulo()=="DAW"){
+        }else if (Objects.equals(milistamodulos.get(i).getModulo(), "DAW")){
             Intent intent = new Intent(this, DAWActivity.class);
             startActivity(intent);
-        }else if (milistamodulos.get(i).getModulo()=="DAM"){
+        }else if (Objects.equals(milistamodulos.get(i).getModulo(), "DAM")){
             Intent intent = new Intent(this, DAMActivity.class);
             startActivity(intent);
         }
